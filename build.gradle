@@ -1,0 +1,75 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.jfrog.bintray'
+apply plugin: 'com.github.dcendents.android-maven'
+
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.1"
+
+    defaultConfig {
+        minSdkVersion 11
+        targetSdkVersion 23
+        versionCode 5
+        versionName "1.0.5"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+version = '1.0.5'
+group = "com.azeesoft.lib.colorpicker"
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:23.1.1'
+    compile 'com.android.support:design:23.1.1'
+}
+
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+
+task javadoc(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+    failOnError false
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+artifacts {
+    archives javadocJar
+    archives sourcesJar
+}
+
+bintray {
+user = 'azeesoft'
+    key = '3d45a2cb273fea293793d6f337b755bb2e121cfa'
+    pkg {
+        repo = 'maven'
+        name = 'com.azeesoft.lib.colorpicker'
+
+        version {
+            name = 'CP-1.0.5'
+            desc = "Bug Fix in Sat and Val edit"
+            released  = new Date()
+            vcsTag = '1.0.5'
+        }
+
+        licenses = ['Apache-2.0']
+        vcsUrl = 'https://github.com/azeesoft/ColorPicker.git'
+        websiteUrl = 'https://azeesoft.com/projects/android/libs/ColorPicker'
+    }
+    configurations = ['archives']
+}

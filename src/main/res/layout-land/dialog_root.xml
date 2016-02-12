@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.azeesoft.lib.colorpicker.ColorPickerRootView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/colorPickerRoot">
+
+    <com.azeesoft.lib.colorpicker.ColorPickerCompatHorizontalScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/footer">
+
+        <include layout="@layout/dialog_color_picker"/>
+    </com.azeesoft.lib.colorpicker.ColorPickerCompatHorizontalScrollView>
+
+    <RelativeLayout
+        android:id="@+id/footer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/pickButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="false"
+            android:layout_alignParentRight="true"
+            android:text="Pick"
+            android:textColor="#4b51d3"
+            android:background="#0000" />
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/cancelButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="false"
+            android:layout_alignParentRight="false"
+            android:text="Cancel"
+            android:textColor="#d5481b"
+            android:layout_toLeftOf="@+id/pickButton"
+            android:background="#0000" />
+    </RelativeLayout>
+
+</com.azeesoft.lib.colorpicker.ColorPickerRootView>

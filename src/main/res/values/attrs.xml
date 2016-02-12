@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="OrientedSeekBar">
+        <attr name="orientation" format="enum">
+            <enum name="horizontal" value="1"/>
+            <enum name="vertical" value="2"/>
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="OpacityPicker">
+        <attr name="cp_showOpacityBar" format="boolean"/>
+    </declare-styleable>
+
+    <declare-styleable name="ColorPickerRootView">
+        <attr name="cp_showHexaDecimalValue" format="boolean"/>
+        <attr name="cp_showColorComponentsInfo" format="boolean"/>
+        <attr name="cp_backgroundColor" format="color"/>
+        <attr name="cp_hexaDecimalTextColor" format="color"/>
+        <attr name="cp_colorComponentsTextColor" format="color"/>
+        <!--<attr name="cp_positiveActionText" format="string" localization="suggested" />
+        <attr name="cp_negativeActionText" format="string" localization="suggested" />-->
+        <attr name="cp_positiveActionTextColor" format="color"/>
+        <attr name="cp_negativeActionTextColor" format="color"/>
+        <attr name="cp_sliderThumbColor" format="color"/>
+        <attr name="cp_editHSV" format="boolean"/>
+        <attr name="cp_editRGB" format="boolean"/>
+    </declare-styleable>
+
+</resources>

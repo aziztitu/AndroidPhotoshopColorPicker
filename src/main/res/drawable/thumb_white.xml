@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--<item android:state_drag_hovered="true" android:drawable="@drawable/thumb_pressed">
+    </item>-->
+    <item android:drawable="@drawable/thumb_white_unpressed">
+    </item>
+</selector>

@@ -1,0 +1,40 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="ColorPicker">
+        <item name="cp_showOpacityBar">true</item>
+        <item name="cp_showHexaDecimalValue">true</item>
+        <item name="cp_showColorComponentsInfo">true</item>
+    </style>
+
+    <style name="ColorPicker.Light" parent="Base.Theme.AppCompat.Light.Dialog">
+        <item name="cp_backgroundColor">#eee</item>
+        <item name="cp_hexaDecimalTextColor">#312e92</item>
+        <item name="cp_colorComponentsTextColor">#444</item>
+        <item name="cp_positiveActionTextColor">#44bc3b</item>
+        <item name="cp_negativeActionTextColor">#ff4545</item>
+        <item name="cp_sliderThumbColor">#333</item>
+    </style>
+
+    <style name="ColorPicker.Dark" parent="Base.Theme.AppCompat.Light.Dialog">
+        <item name="cp_backgroundColor">#222</item>
+        <item name="cp_hexaDecimalTextColor">#ff0</item>
+        <item name="cp_colorComponentsTextColor">#fff</item>
+        <item name="cp_positiveActionTextColor">#63e55c</item>
+        <item name="cp_negativeActionTextColor">#ff4545</item>
+        <item name="cp_sliderThumbColor">#ddd</item>
+    </style>
+</resources>

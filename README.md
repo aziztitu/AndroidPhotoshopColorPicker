@@ -106,16 +106,16 @@ For eg:
  
 # Screenshots
   
-* .. image:: https://github.com/AzeeSoft/AndroidPhotoshopColorPicker/raw/master/screen_1.png
+* .. image:: https://github.com/AzeeSoft/AndroidPhotoshopColorPicker/master/screen_1.png
 
-* .. image:: https://github.com/AzeeSoft/AndroidPhotoshopColorPicker/raw/master/screen_2.png
+* .. image:: https://github.com/AzeeSoft/AndroidPhotoshopColorPicker/master/screen_2.png
 
-* .. image:: https://github.com/AzeeSoft/AndroidPhotoshopColorPicker/raw/master/screen_3.png
+* .. image:: https://github.com/AzeeSoft/AndroidPhotoshopColorPicker/master/screen_3.png
 
-* .. image:: https://github.com/AzeeSoft/AndroidPhotoshopColorPicker/raw/master/screen_4.png
+* .. image:: https://github.com/AzeeSoft/AndroidPhotoshopColorPicker/master/screen_4.png
 
-* .. image:: https://github.com/AzeeSoft/AndroidPhotoshopColorPicker/raw/master/screen_5.png
+* .. image:: https://github.com/AzeeSoft/AndroidPhotoshopColorPicker/master/screen_5.png
 
-* .. image:: https://github.com/AzeeSoft/AndroidPhotoshopColorPicker/raw/master/screen_6.png
+* .. image:: https://github.com/AzeeSoft/AndroidPhotoshopColorPicker/master/screen_6.png
  
   

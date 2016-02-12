@@ -43,20 +43,20 @@ After successful build, you can use ColorPickerDialog as a part of your project.
 
   To create a default ColorPickerDialog with Light theme, use
 
-    ColorPickerDialog colorPickerDialog= ColorPickerDialog.createColorPickerDialog(this);
+        ColorPickerDialog colorPickerDialog= ColorPickerDialog.createColorPickerDialog(this);
 
   To create a ColorPickerDialog with Dark theme, use
 
-    ColorPickerDialog colorPickerDialog= ColorPickerDialog.createColorPickerDialog(this,ColorPickerDialog.DARK_THEME);
+        ColorPickerDialog colorPickerDialog= ColorPickerDialog.createColorPickerDialog(this,ColorPickerDialog.DARK_THEME);
 
 2. Set an OnColorPickedListener to call when the color is picked:
 
-    colorPickerDialog.setOnColorPickedListener(new ColorPickerDialog.OnColorPickedListener() {
-        @Override
-        public void onColorPicked(int color, String hexVal) {
-            //Your code here
-        }
-    });
+        colorPickerDialog.setOnColorPickedListener(new ColorPickerDialog.OnColorPickedListener() {
+            @Override
+            public void onColorPicked(int color, String hexVal) {
+                //Your code here
+            }
+        });
   
 3. Customize the colorPickerDialog if needed using appropriate methods and show the dialog:
 

@@ -92,6 +92,8 @@ For eg:
         <item name="cp_sliderThumbColor">#accc</item>
     </style>
   
+  
+  
     ColorPickerDialog colorPickerDialog = ColorPickerDialog.createColorPickerDialog(this,R.style.CustomColorPicker);
     colorPickerDialog.setOnColorPickedListener(new ColorPickerDialog.OnColorPickedListener() {
         @Override

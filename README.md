@@ -106,16 +106,16 @@ For eg:
  
 # Screenshots
   
-![](raw/screen_1.png?raw=true "Light Theme")
+![](raw/screen_1.jpg?raw=true "Light Theme")
 
-![](raw/screen_2.png?raw=true "Dark Theme")
+![](raw/screen_2.jpg?raw=true "Dark Theme")
 
-![](raw/screen_3.png?raw=true "HSV Editing - Light Theme")
+![](raw/screen_3.jpg?raw=true "HSV Editing - Light Theme")
 
-![](raw/screen_4.png?raw=true "HSV Editing - Dark Theme")
+![](raw/screen_4.jpg?raw=true "HSV Editing - Dark Theme")
 
-![](raw/screen_5.png?raw=true "RGB Editing - Light Theme")
+![](raw/screen_5.jpg?raw=true "RGB Editing - Light Theme")
 
-![](raw/screen_6.png?raw=true "RGB Editing - Dark Theme")
+![](raw/screen_6.jpg?raw=true "RGB Editing - Dark Theme")
  
   

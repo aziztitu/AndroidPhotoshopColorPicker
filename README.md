@@ -1,11 +1,9 @@
-===========================
+
 # AndroidColorPickerLibrary
-===========================
 
 A full featured Color picker Library for Android! Just like the one in Photoshop!
 
 # Features
-==========
 
 * Hue bar - Adjust hue using a slider
 * Saturation & Value Box - Select the color from the Saturation & Value Box (like in Photoshop)
@@ -16,12 +14,10 @@ A full featured Color picker Library for Android! Just like the one in Photoshop
 * Easy to use - All the hardwork is done by us. Just a few lines of code is all you have to do
 
 # Requirements
-==============
 
 Tested with APIv11, but will most probably work with earlier versions as well.
 
 # Installation (Adding to your project)
-=======================================
 
 The library is posted on jcenter. So, just the following code should be enough to get you started:
 
@@ -42,7 +38,6 @@ If there is any error while building the project using the above mentioned step,
 After successful build, you can use ColorPickerDialog as a part of your project.
 
 # Usage
-=======
 
 1. Create a new ColorPickerDialog object using the static method createColorPickerDialog()
 
@@ -110,7 +105,6 @@ For eg:
     colorPickerDialog.show();
  
 # Screenshots
-=============
   
 * .. image:: https://github.com/AzeeSoft/AndroidPhotoshopColorPicker/raw/master/screen_1.png
 

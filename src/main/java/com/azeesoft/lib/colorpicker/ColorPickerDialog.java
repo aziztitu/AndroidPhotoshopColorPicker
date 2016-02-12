@@ -30,9 +30,10 @@ import android.widget.TextView;
  *<br/><br/>
  * Use createColorPickerDialog(Context context) or createColorPickerDialog(Context context,int theme) to instantiate this class
  * <br/><br/>
- * To create custom themes, use the following attributes:<br/><br/>
+ * To create custom themes, create a new style with any of the ColorPicker themes as parent and use the following attributes:<br/><br/>
  * cp_showOpacityBar: boolean<br/>
  * cp_showHexaDecimalValue: boolean<br/>
+ * cp_showColorComponentsInfo: boolean<br/>
  * cp_backgroundColor: color<br/>
  * cp_hexaDecimalTextColor: color<br/>
  * cp_colorComponentsTextColor: color<br/>
@@ -94,9 +95,10 @@ public class ColorPickerDialog extends Dialog {
      * To create a Dark themed ColorPickerDialog, use ColorPickerDialog.createColorPickerDialog(context,ColorPickerDialog.DARK_THEME);
      *
      * <br/><br/>
-     * To create custom themes, use the following attributes:<br/><br/>
+     * To create custom themes, create a new style with any of the ColorPicker themes as parent and use the following attributes:<br/><br/>
      * cp_showOpacityBar: boolean<br/>
      * cp_showHexaDecimalValue: boolean<br/>
+     * cp_showColorComponentsInfo: boolean<br/>
      * cp_backgroundColor: color<br/>
      * cp_hexaDecimalTextColor: color<br/>
      * cp_colorComponentsTextColor: color<br/>
@@ -118,9 +120,10 @@ public class ColorPickerDialog extends Dialog {
      *<br/><br/>
      * To create a dark themed ColorPickerDialog, use ColorPickerDialog.createColorPickerDialog(context,ColorPickerDialog.DARK_THEME);
      *<br/><br/>
-     * To create custom themes, use the following attributes:<br/><br/>
+     * To create custom themes, create a new style with any of the ColorPicker themes as parent and use the following attributes:<br/><br/>
      * cp_showOpacityBar: boolean<br/>
      * cp_showHexaDecimalValue: boolean<br/>
+     * cp_showColorComponentsInfo: boolean<br/>
      * cp_backgroundColor: color<br/>
      * cp_hexaDecimalTextColor: color<br/>
      * cp_colorComponentsTextColor: color<br/>

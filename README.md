@@ -106,16 +106,16 @@ For eg:
  
 # Screenshots
   
-* .. image:: https://github.com/AzeeSoft/AndroidPhotoshopColorPicker/master/screen_1.png
+![](raw/screen_1.png?raw=true "Light Theme")
 
-* .. image:: https://github.com/AzeeSoft/AndroidPhotoshopColorPicker/master/screen_2.png
+![](raw/screen_2.png?raw=true "Dark Theme")
 
-* .. image:: https://github.com/AzeeSoft/AndroidPhotoshopColorPicker/master/screen_3.png
+![](raw/screen_3.png?raw=true "HSV Editing - Light Theme")
 
-* .. image:: https://github.com/AzeeSoft/AndroidPhotoshopColorPicker/master/screen_4.png
+![](raw/screen_4.png?raw=true "HSV Editing - Dark Theme")
 
-* .. image:: https://github.com/AzeeSoft/AndroidPhotoshopColorPicker/master/screen_5.png
+![](raw/screen_5.png?raw=true "RGB Editing - Light Theme")
 
-* .. image:: https://github.com/AzeeSoft/AndroidPhotoshopColorPicker/master/screen_6.png
+![](raw/screen_6.png?raw=true "RGB Editing - Dark Theme")
  
   

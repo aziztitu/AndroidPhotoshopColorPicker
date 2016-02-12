@@ -10,8 +10,8 @@ android {
     defaultConfig {
         minSdkVersion 11
         targetSdkVersion 23
-        versionCode 5
-        versionName "1.0.5"
+        versionCode 6
+        versionName "1.0.6"
     }
     buildTypes {
         release {
@@ -22,7 +22,7 @@ android {
 
 }
 
-version = '1.0.5'
+version = '1.0.6'
 group = "com.azeesoft.lib.colorpicker"
 
 dependencies {
@@ -61,14 +61,14 @@ user = 'azeesoft'
         name = 'com.azeesoft.lib.colorpicker'
 
         version {
-            name = 'CP-1.0.5'
-            desc = "Bug Fix in Sat and Val edit"
+            name = 'CP-1.0.6'
+            desc = "Updated JavaDoc for styling"
             released  = new Date()
-            vcsTag = '1.0.5'
+            vcsTag = '1.0.6'
         }
 
         licenses = ['Apache-2.0']
-        vcsUrl = 'https://github.com/azeesoft/ColorPicker.git'
+        vcsUrl = 'https://github.com/AzeeSoft/AndroidPhotoshopColorPicker.git'
         websiteUrl = 'https://azeesoft.com/projects/android/libs/ColorPicker'
     }
     configurations = ['archives']

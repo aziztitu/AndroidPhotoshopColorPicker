@@ -60,8 +60,8 @@ After successful build, you can use ColorPickerDialog as a part of your project.
   
 3. Customize the colorPickerDialog if needed using appropriate methods and show the dialog:
 
-    colorPickerDialog.setHexaDecimalTextColor(Color.parse("#ffffff")); //There are many functions like this
-    colorPickerDialog.show();
+        colorPickerDialog.setHexaDecimalTextColor(Color.parse("#ffffff")); //There are many functions like this
+        colorPickerDialog.show();
   
 4. To create a ColorPickerDialog with Custom theme, create a new style with any of the ColorPicker themes as parent and use the following attributes:
   

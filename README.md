@@ -83,6 +83,7 @@ After successful build, you can use ColorPickerDialog as a part of your project.
 
 For eg:
 
+styles.xml:
     <style name="CustomColorPicker" parent="ColorPicker">
         <item name="cp_backgroundColor">#4745e5</item>
         <item name="cp_hexaDecimalTextColor">#000046</item>
@@ -93,7 +94,7 @@ For eg:
     </style>
 
 
-
+In Java:
     ColorPickerDialog colorPickerDialog = ColorPickerDialog.createColorPickerDialog(this,R.style.CustomColorPicker);
     colorPickerDialog.setOnColorPickedListener(new ColorPickerDialog.OnColorPickedListener() {
         @Override

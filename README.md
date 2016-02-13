@@ -28,7 +28,7 @@ The library is posted on jcenter. So, just the following code should be enough t
 Place this in your app module's build.gradle file:
 
     dependencies {
-      compile 'com.azeesoft.lib.colorpicker:colorpicker:1.0.7@aar'
+      compile 'com.azeesoft.lib.colorpicker:colorpicker:1.0.8@aar'
     }
 
 If there is any error while building the project using the above mentioned step, add the following code in that build.gradle file and build again:

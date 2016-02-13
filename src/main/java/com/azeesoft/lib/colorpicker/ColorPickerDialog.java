@@ -339,6 +339,12 @@ public class ColorPickerDialog extends Dialog {
         //System.out.println("Hexa typed: " + s);
         try {
             int color=Color.parseColor("#"+s);
+            if(opacityPicker.getVisibility()!=View.VISIBLE){
+                if(s.length()==8){
+                    s=s.substring(2);
+                    color=Color.parseColor("#" + s);
+                }
+            }
             setCurrentColor(color,false);
         } catch (Exception e) {
             e.printStackTrace();
@@ -520,6 +526,26 @@ public class ColorPickerDialog extends Dialog {
      */
     public void setInitialColor(int color){
         initColor=color;
+    }
+
+    /**
+     * Use it to set last color preview in the ColorPicker
+     *
+     * @param color Color to be applied to the last color preview in the ColorPicker
+     */
+    public void setLastColor(int color){
+        Stools.saveLastColor(getContext(), Integer.toHexString(color));
+        reloadLastColor();
+    }
+
+    /**
+     * Use it to set last color preview in the ColorPicker
+     *
+     * @param color Hexadecimal String form of the color to be applied to the last color preview in the ColorPicker
+     */
+    public void setLastColor(String hexVal){
+        Stools.saveLastColor(getContext(), hexVal);
+        reloadLastColor();
     }
 
     /**

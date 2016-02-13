@@ -343,6 +343,7 @@ public class ColorPickerDialog extends Dialog {
                 if(s.length()==8){
                     s=s.substring(2);
                     color=Color.parseColor("#" + s);
+
                 }
             }
             setCurrentColor(color,false);

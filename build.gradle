@@ -10,8 +10,8 @@ android {
     defaultConfig {
         minSdkVersion 11
         targetSdkVersion 23
-        versionCode 7
-        versionName "1.0.7"
+        versionCode 8
+        versionName "1.0.8"
     }
     buildTypes {
         release {
@@ -22,7 +22,7 @@ android {
 
 }
 
-version = '1.0.7'
+version = '1.0.8'
 group = "com.azeesoft.lib.colorpicker"
 
 dependencies {
@@ -61,10 +61,10 @@ user = 'azeesoft'
         name = 'com.azeesoft.lib.colorpicker'
 
         version {
-            name = 'CP-1.0.7'
-            desc = "Added methods to set last color"
+            name = 'CP-1.0.8'
+            desc = "Fixed a bug"
             released  = new Date()
-            vcsTag = '1.0.7'
+            vcsTag = '1.0.8'
         }
 
         licenses = ['Apache-2.0']

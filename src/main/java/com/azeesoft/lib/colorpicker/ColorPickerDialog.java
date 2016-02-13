@@ -396,13 +396,17 @@ public class ColorPickerDialog extends Dialog {
     }
 
     private void reloadLastColor(){
+        reloadLastColor(initColor);
+    }
+
+    private void reloadLastColor(int current_color){
         String lastHexVal=Stools.loadLastColor(getContext());
         if(lastHexVal!=null){
             //System.out.println("LastColor: "+lastHexVal);
             int lastColor=Color.parseColor(lastHexVal);
             oldColorPreviewBox.setBackgroundColor(lastColor);
         }
-        setCurrentColor(initColor);
+        setCurrentColor(current_color);
     }
 
     private void setCurrentColor(int color){
@@ -480,7 +484,7 @@ public class ColorPickerDialog extends Dialog {
 
 
     /**
-     * Use it to get the last picked color as a String in hexadecimal form (Eg: #ff000000)
+     * Gets the last picked color as a String in hexadecimal form (Eg: #ff000000)
      *
      * @param context Context
      * @return Returns the last picked color as a hexadecimal String(Eg: #ff000000) or null if the last picked color doesn't exist
@@ -491,7 +495,7 @@ public class ColorPickerDialog extends Dialog {
 
 
     /**
-     * Use it to get the last picked color as an int
+     * Gets the last picked color as an int
      *
      * @param context Context
      * @return Returns the last picked color or WHITE(-1) if the last picked color doesn't exist
@@ -505,7 +509,7 @@ public class ColorPickerDialog extends Dialog {
     }
 
     /**
-     *Use it to get the currently selected color
+     * Gets the currently selected color
      * @return Returns the currently selected color in the ColorPicker
      */
     public int getCurrentColor(){
@@ -513,7 +517,7 @@ public class ColorPickerDialog extends Dialog {
     }
 
     /**
-     * Use it to get the currently selected color as a String in hexadecimal form (Eg: #ff000000)
+     * Gets the currently selected color as a String in hexadecimal form (Eg: #ff000000)
      * @return Returns the currently selected color in the ColorPicker as a hexadecimal String (Eg: #ff000000)
      */
     public String getCurrentColorAsHexa(){
@@ -521,7 +525,7 @@ public class ColorPickerDialog extends Dialog {
     }
 
     /**
-     * Use it to set a pre-selected color in the ColorPicker when the dialog opens
+     * Sets a pre-selected color in the ColorPicker when the dialog opens
      *
      * @param color Color to be pre-selected in the ColorPicker when the dialog opens
      */
@@ -530,22 +534,22 @@ public class ColorPickerDialog extends Dialog {
     }
 
     /**
-     * Use it to set last color preview in the ColorPicker
+     * Sets the last color and current color in the ColorPicker
      *
-     * @param color Color to be applied to the last color preview in the ColorPicker
+     * @param color Color to be applied to the last color and current color in the ColorPicker
      */
     public void setLastColor(int color){
-        Stools.saveLastColor(getContext(), "#"+Integer.toHexString(color));
-        reloadLastColor();
+        setLastColor("#"+Integer.toHexString(color));
     }
 
     /**
-     * Use it to set last color preview in the ColorPicker
+     * Sets the last color and current color in the ColorPicker
      *
-     * @param color Hexadecimal String form of the color to be applied to the last color preview in the ColorPicker
+     * @param hexVal Hexadecimal String form of the color to be applied to the last color and current color in the ColorPicker
      */
     public void setLastColor(String hexVal){
         Stools.saveLastColor(getContext(), hexVal);
+        initColor=Color.parseColor(hexVal);
         reloadLastColor();
     }
 
@@ -592,7 +596,7 @@ public class ColorPickerDialog extends Dialog {
     }
 
     /**
-     * Set a Background color for the dialog
+     * Sets a Background color for the dialog
      * @param color Color to use as background for the dialog
      */
     public void setBackgroundColor(int color){

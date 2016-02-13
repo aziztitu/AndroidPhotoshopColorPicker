@@ -1,5 +1,9 @@
 
-# AndroidColorPickerLibrary
+# AndroidPhotoshopColorPicker
+
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-AndroidPhotoshopColorPicker-green.svg?style=true)](https://android-arsenal.com/details/1/3143)
+
+
 
 A full featured Color picker Library for Android! Just like the one in Photoshop!
 

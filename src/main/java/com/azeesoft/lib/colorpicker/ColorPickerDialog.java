@@ -535,7 +535,7 @@ public class ColorPickerDialog extends Dialog {
      * @param color Color to be applied to the last color preview in the ColorPicker
      */
     public void setLastColor(int color){
-        Stools.saveLastColor(getContext(), Integer.toHexString(color));
+        Stools.saveLastColor(getContext(), "#"+Integer.toHexString(color));
         reloadLastColor();
     }
 

@@ -498,12 +498,12 @@ public class ColorPickerDialog extends Dialog {
      * Gets the last picked color as an int
      *
      * @param context Context
-     * @return Returns the last picked color or WHITE(-1) if the last picked color doesn't exist
+     * @return Returns the last picked color or Transparent color if the last picked color doesn't exist
      */
     public static int getLastColor(Context context){
         String lastColorHex=Stools.loadLastColor(context);
         if(lastColorHex==null)
-            return Color.parseColor("#ffffffff");
+            return Color.parseColor("#00ffffff");
         else
             return Color.parseColor(lastColorHex);
     }
@@ -523,6 +523,16 @@ public class ColorPickerDialog extends Dialog {
     public String getCurrentColorAsHexa(){
         return mHexVal;
     }
+
+    /**
+     * Sets a pre-selected color in the ColorPicker when the dialog opens
+     *
+     * @param color Hexadecimal String form of the color to be pre-selected in the ColorPicker when the dialog opens
+     */
+    public void setInitialColor(String hexVal){
+        setInitialColor(Color.parseColor(hexVal));
+    }
+
 
     /**
      * Sets a pre-selected color in the ColorPicker when the dialog opens

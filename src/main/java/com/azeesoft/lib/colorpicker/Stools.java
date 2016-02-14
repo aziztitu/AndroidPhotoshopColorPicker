@@ -2,6 +2,7 @@ package com.azeesoft.lib.colorpicker;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.graphics.ColorFilter;
 import android.graphics.ColorMatrixColorFilter;
 import android.graphics.drawable.Drawable;
@@ -33,20 +34,32 @@ public class Stools {
      * @param hexaVal Color to store in hexadecimal form (Eg: #ff000000 or #000000)
      */
     public static void saveLastColor(Context context,String hexaVal){
-        SharedPreferences sharedPreferences=context.getSharedPreferences("colpick", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor=sharedPreferences.edit();
-        editor.putString(SP_KEY_LAST_COLOR,hexaVal);
-        editor.commit();
+        try {
+            Color.parseColor(hexaVal);
+            SharedPreferences sharedPreferences=context.getSharedPreferences("colpick", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor=sharedPreferences.edit();
+            editor.putString(SP_KEY_LAST_COLOR,hexaVal);
+            editor.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     /**
-     * Gets the color stored in Shared Preferences as the last picked color
+     * Gets the color stored in Shared Preferences as the last picked color or null if it doesn't exist
      * @param context Context
-     * @return Last picked color in hexadecimal form (Eg: #ff000000 or #000000)
+     * @return Last picked color in hexadecimal form (Eg: #ff000000 or #000000) or null if it doesn't exist
      */
     public static String loadLastColor(Context context){
-        SharedPreferences sharedPreferences=context.getSharedPreferences("colpick", Context.MODE_PRIVATE);
-        return sharedPreferences.getString(SP_KEY_LAST_COLOR,null);
+        try {
+            SharedPreferences sharedPreferences=context.getSharedPreferences("colpick", Context.MODE_PRIVATE);
+            String s=sharedPreferences.getString(SP_KEY_LAST_COLOR,null);
+            Color.parseColor(s);
+            return s;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     /**

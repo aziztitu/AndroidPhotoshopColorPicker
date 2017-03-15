@@ -1,15 +1,23 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.jfrog.bintray'
 apply plugin: 'com.github.dcendents.android-maven'
 
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.2.0'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
+    }
+}
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.1"
+    compileSdkVersion 25
+    buildToolsVersion "23.0.3"
 
     defaultConfig {
         minSdkVersion 11
-        targetSdkVersion 23
+        targetSdkVersion 25
         versionCode 9
         versionName "1.0.9"
     }
@@ -19,17 +27,16 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-
 }
 
 version = '1.0.9'
-group = "com.azeesoft.lib.colorpicker"
+group = "com.alexandre.g.lib.colorpicker"
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:23.1.1'
-    compile 'com.android.support:design:23.1.1'
+    //testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:25.2.0'
+    compile 'com.android.support:design:25.2.0'
 }
 
 task sourcesJar(type: Jar) {
@@ -51,25 +58,4 @@ task javadocJar(type: Jar, dependsOn: javadoc) {
 artifacts {
     archives javadocJar
     archives sourcesJar
-}
-
-bintray {
-user = 'azeesoft'
-    key = '3d45a2cb273fea293793d6f337b755bb2e121cfa'
-    pkg {
-        repo = 'maven'
-        name = 'com.azeesoft.lib.colorpicker'
-
-        version {
-            name = 'CP-1.0.9'
-            desc = "Added additional check for saving and loading last color"
-            released  = new Date()
-            vcsTag = '1.0.9'
-        }
-
-        licenses = ['Apache-2.0']
-        vcsUrl = 'https://github.com/AzeeSoft/AndroidPhotoshopColorPicker.git'
-        websiteUrl = 'https://azeesoft.com/projects/android/libs/ColorPicker'
-    }
-    configurations = ['archives']
 }

@@ -61,7 +61,7 @@ public class ColorPickerDialog extends Dialog {
     private LinearLayout colorPreviewBox,oldColorPreviewBox;
     private EditText hexVal;
     private TextView hex,hue,sat,val,red,green,blue,alpha;
-    private ImageView hsvEditIcon,rgbEditIcon;
+    private ImageView hsvEditIcon,rgbEditIcon,ivNoColor;
     private AppCompatButton pickButton,cancelButton;
     private RelativeLayout colorComponents,hexHolder,hsv,rgb;
     private ColorPickerCompatScrollView colorPickerCompatScrollView;
@@ -229,6 +229,7 @@ public class ColorPickerDialog extends Dialog {
         alpha=(TextView)findViewById(R.id.alpha);
         hsvEditIcon=(ImageView)findViewById(R.id.hsvEditIcon);
         rgbEditIcon=(ImageView)findViewById(R.id.rgbEditIcon);
+        ivNoColor=(ImageView)findViewById(R.id.ivNoColor);
 
         huePicker.setOnHuePickedListener(new HuePicker.OnHuePickedListener() {
             @Override
@@ -322,10 +323,16 @@ public class ColorPickerDialog extends Dialog {
             }
         });
 
-//        reloadLastColor();
+        ivNoColor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onColorPickedListener.onColorPicked(Color.TRANSPARENT, "#00ffffff");
+            }
+        });
+
+        //reloadLastColor();
 
         applyTheme();
-
     }
 
     private String getPlainComponentValue(String s){
@@ -575,6 +582,7 @@ public class ColorPickerDialog extends Dialog {
      */
     public void hideOpacityBar(){
         opacityPicker.setVisibility(View.GONE);
+        alpha.setVisibility(View.GONE);
     }
 
     /**

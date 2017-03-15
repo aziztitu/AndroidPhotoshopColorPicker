@@ -326,7 +326,9 @@ public class ColorPickerDialog extends Dialog {
         ivNoColor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onColorPickedListener.onColorPicked(Color.TRANSPARENT, "#00ffffff");
+                if (onColorPickedListener != null)
+                    onColorPickedListener.onColorPicked(Color.TRANSPARENT, "#00ffffff");
+                dismiss();
             }
         });
 

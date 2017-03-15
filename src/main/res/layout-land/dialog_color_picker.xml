@@ -86,7 +86,8 @@
                     android:layout_height="50dp"
                     android:layout_alignParentLeft="true"
                     android:src="@drawable/no_color"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginLeft="0dp"
+                    android:padding="7dp"
                     android:id="@+id/ivNoColor" />
 
                 <ImageView
@@ -95,14 +96,14 @@
                     android:id="@+id/imageView"
                     android:src="@mipmap/checker"
                     android:layout_toRightOf="@id/ivNoColor"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginLeft="35dp"
                     android:adjustViewBounds="false"
                     android:scaleType="matrix" />
 
                 <LinearLayout
                     android:layout_toRightOf="@id/ivNoColor"
                     android:orientation="horizontal"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginLeft="35dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
 

@@ -3,23 +3,25 @@ apply plugin: 'com.github.dcendents.android-maven'
 
 buildscript {
     repositories {
+        jcenter()
         mavenCentral()
+        google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.2.0'
-        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
+        classpath 'com.android.tools.build:gradle:3.5.0'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:2.0'
     }
 }
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "23.0.3"
+    compileSdkVersion 29
+    buildToolsVersion "29.0.2"
 
     defaultConfig {
-        minSdkVersion 11
-        targetSdkVersion 25
-        versionCode 9
-        versionName "1.0.9"
+        minSdkVersion 14
+        targetSdkVersion 29
+        versionCode 10
+        versionName "1.1.2"
     }
     buildTypes {
         release {
@@ -29,7 +31,7 @@ android {
     }
 }
 
-version = '1.0.9'
+version = '1.1.2'
 group = "com.alexandre.g.lib.colorpicker"
 
 dependencies {
@@ -53,6 +55,12 @@ task javadoc(type: Javadoc) {
 task javadocJar(type: Jar, dependsOn: javadoc) {
     classifier = 'javadoc'
     from javadoc.destinationDir
+}
+
+repositories {
+    jcenter()
+    mavenCentral()
+    google()
 }
 
 artifacts {

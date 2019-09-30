@@ -107,7 +107,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true">
 
-            <android.support.v7.widget.AppCompatButton
+            <Button
                 android:id="@+id/doneEditing"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -118,7 +118,7 @@
                 android:textColor="#4b51d3"
                 android:background="#0000" />
 
-            <android.support.v7.widget.AppCompatButton
+            <Button
                 android:id="@+id/cancelEditing"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

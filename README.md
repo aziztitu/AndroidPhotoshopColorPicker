@@ -8,6 +8,7 @@ A full featured Color picker Library for Android! Just like the one in Photoshop
 # Differences from original repository
 
 * Posted on jitpack.io instead of jcenter
+* Added a "no color" option (transparent color value)
 * Original bitmap generation was prone to crashes, which are instead caught in this fork's source code
 * Original HuePicker, OpacityPicker and SatValPicker have memory leaks, which are fixed in this fork's code
 * For the above changes, HuePicker provides the method `setBitmapGenerationFailedListener` which listens for bitmap generation failure

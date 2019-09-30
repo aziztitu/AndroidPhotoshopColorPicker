@@ -10,34 +10,33 @@ import android.view.MotionEvent;
 
 /**
  * Created by aziz titu2 on 2/11/2016.
- *<p></p>
+ * <p></p>
  * A modified {@link AppCompatSeekBar} which can be used both Horizontally as well as Vertically
- *<p></p>
+ * <p></p>
  * To specify the orientation:
- *<p></p>
+ * <p></p>
  * Java:<p></p>
- *      setOrientation(int orientation);<p></p>
- *
+ * setOrientation(int orientation);<p></p>
+ * <p>
  * XML:<p></p>
- *      attribute 'orientation'<p></p>
- *
- *      Use<p></p>
- *          orientation=horizontal<p></p>
- *
- *          or<p></p>
- *
- *          orientation=vertical<p></p>
+ * attribute 'orientation'<p></p>
+ * <p>
+ * Use<p></p>
+ * orientation=horizontal<p></p>
+ * <p>
+ * or<p></p>
+ * <p>
+ * orientation=vertical<p></p>
  */
 public class OrientedSeekBar extends AppCompatSeekBar {
 
-    protected static final int ORIENTATION_HORIZONTAL=1,ORIENTATION_VERTICAL=2;
+    protected static final int ORIENTATION_HORIZONTAL = 1, ORIENTATION_VERTICAL = 2;
 
-    protected int orientation=ORIENTATION_HORIZONTAL;
+    protected int orientation = ORIENTATION_HORIZONTAL;
 
     private OnSeekBarChangeListener seekBarChangeListener;
     private ColorPickerCompatScrollView colorPickerCompatScrollView;
     private ColorPickerCompatHorizontalScrollView colorPickerCompatHorizontalScrollView;
-
 
     public OrientedSeekBar(Context context) {
         super(context);
@@ -45,8 +44,7 @@ public class OrientedSeekBar extends AppCompatSeekBar {
 
     public OrientedSeekBar(Context context, AttributeSet attrs) {
         super(context, attrs);
-        TypedArray a = context.obtainStyledAttributes(attrs,R.styleable.OrientedSeekBar, 0, 0);
-
+        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.OrientedSeekBar, 0, 0);
         try {
             orientation = a.getInt(R.styleable.OrientedSeekBar_orientation, ORIENTATION_HORIZONTAL);
         } finally {
@@ -55,19 +53,19 @@ public class OrientedSeekBar extends AppCompatSeekBar {
     }
 
 
-
     @Override
-    public void setOnSeekBarChangeListener(OnSeekBarChangeListener mListener){
+    public void setOnSeekBarChangeListener(OnSeekBarChangeListener mListener) {
         this.seekBarChangeListener = mListener;
         super.setOnSeekBarChangeListener(mListener);
     }
 
+    @SuppressWarnings("SuspiciousNameCombination")
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        if(orientation==ORIENTATION_HORIZONTAL){
+        if (orientation == ORIENTATION_HORIZONTAL) {
             super.onMeasure(widthMeasureSpec, heightMeasureSpec);
             setMeasuredDimension(getMeasuredWidth(), getMeasuredHeight());
-        }else{
+        } else {
             super.onMeasure(heightMeasureSpec, widthMeasureSpec);
             setMeasuredDimension(getMeasuredHeight(), getMeasuredWidth());
         }
@@ -75,16 +73,15 @@ public class OrientedSeekBar extends AppCompatSeekBar {
 
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
-        if(orientation==ORIENTATION_HORIZONTAL)
+        if (orientation == ORIENTATION_HORIZONTAL)
             super.onSizeChanged(w, h, oldw, oldh);
         else
             super.onSizeChanged(h, w, oldh, oldw);
     }
 
-
     @Override
     protected synchronized void onDraw(Canvas c) {
-        if(orientation!=ORIENTATION_HORIZONTAL){
+        if (orientation != ORIENTATION_HORIZONTAL) {
 
             c.rotate(-90);
             c.translate(-getHeight(), 0);
@@ -96,11 +93,9 @@ public class OrientedSeekBar extends AppCompatSeekBar {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        if(orientation==ORIENTATION_HORIZONTAL)
-        {
+        if (orientation == ORIENTATION_HORIZONTAL) {
             return super.onTouchEvent(event);
         }
-
 
         //Only if orientation is vertical
         if (!isEnabled()) {
@@ -110,8 +105,7 @@ public class OrientedSeekBar extends AppCompatSeekBar {
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN: {
 //                is = true;
-                int i = 0;
-                i = getMax() - (int) Math.ceil((getMax() * event.getY() / getHeight()));
+                int i = getMax() - (int) Math.ceil((getMax() * event.getY() / getHeight()));
                 setProgress(i);
                 //setProgress(getMax() - (int) (getMax() * event.getY() / getHeight()));
                 onSizeChanged(getWidth(), getHeight(), 0, 0);
@@ -123,8 +117,7 @@ public class OrientedSeekBar extends AppCompatSeekBar {
                 break;
             }
             case MotionEvent.ACTION_MOVE: {
-                int i = 0;
-                i = getMax() - (int) Math.ceil((getMax() * event.getY() / getHeight()));
+                int i = getMax() - (int) Math.ceil((getMax() * event.getY() / getHeight()));
                 setProgress(i);
                 //setProgress(getMax() - (int) (getMax() * event.getY() / getHeight()));
                 onSizeChanged(getWidth(), getHeight(), 0, 0);
@@ -133,9 +126,8 @@ public class OrientedSeekBar extends AppCompatSeekBar {
                 break;
             }
             case MotionEvent.ACTION_UP: {
-                int i = 0;
+                int i = getMax() - (int) Math.ceil((getMax() * event.getY() / getHeight()));
 //                is = false;
-                i = getMax() - (int) Math.ceil((getMax() * event.getY() / getHeight()));
                 setProgress(i);
                 //setProgress(getMax() - (int) (getMax() * event.getY() / getHeight()));
                 onSizeChanged(getWidth(), getHeight(), 0, 0);
@@ -190,33 +182,33 @@ public class OrientedSeekBar extends AppCompatSeekBar {
         onSizeChanged(getWidth(), getHeight(), 0, 0);
     }
 
-    private void disableScroll(){
-        if(colorPickerCompatScrollView!=null)
+    private void disableScroll() {
+        if (colorPickerCompatScrollView != null)
             colorPickerCompatScrollView.setScrollDisabled(true);
 
-        if(colorPickerCompatHorizontalScrollView!=null)
+        if (colorPickerCompatHorizontalScrollView != null)
             colorPickerCompatHorizontalScrollView.setScrollDisabled(true);
     }
 
-    private void enableScroll(){
-        if(colorPickerCompatScrollView!=null)
+    private void enableScroll() {
+        if (colorPickerCompatScrollView != null)
             colorPickerCompatScrollView.setScrollDisabled(false);
 
-
-        if(colorPickerCompatHorizontalScrollView!=null)
+        if (colorPickerCompatHorizontalScrollView != null)
             colorPickerCompatHorizontalScrollView.setScrollDisabled(false);
     }
 
-    public void setColorPickerCompatScrollView(ColorPickerCompatScrollView colorPickerCompatScrollView){
-        this.colorPickerCompatScrollView=colorPickerCompatScrollView;
+    public void setColorPickerCompatScrollView(ColorPickerCompatScrollView colorPickerCompatScrollView) {
+        this.colorPickerCompatScrollView = colorPickerCompatScrollView;
     }
 
-    public void setColorPickerCompatHorizontalScrollView(ColorPickerCompatHorizontalScrollView colorPickerCompatHorizontalScrollView){
-        this.colorPickerCompatHorizontalScrollView=colorPickerCompatHorizontalScrollView;
+    public void setColorPickerCompatHorizontalScrollView(ColorPickerCompatHorizontalScrollView colorPickerCompatHorizontalScrollView) {
+        this.colorPickerCompatHorizontalScrollView = colorPickerCompatHorizontalScrollView;
     }
 
     /**
      * Sets the orientation of the seekbar
+     *
      * @param orientation Use ORIENTATION_HORIZONTAL or ORIENTATION_VERTICAL (Default is ORIENTATION_HORIZONTAL)
      */
     public void setOrientation(int orientation) {

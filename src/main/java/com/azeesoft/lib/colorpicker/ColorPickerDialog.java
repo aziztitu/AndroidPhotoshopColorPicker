@@ -6,8 +6,6 @@ import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
-import android.support.v7.view.ContextThemeWrapper;
-import android.support.v7.widget.AppCompatButton;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -15,12 +13,14 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.appcompat.view.ContextThemeWrapper;
 
 
 /**
@@ -62,7 +62,7 @@ public class ColorPickerDialog extends Dialog {
     private EditText hexVal;
     private TextView hex,hue,sat,val,red,green,blue,alpha;
     private ImageView hsvEditIcon,rgbEditIcon,ivNoColor;
-    private AppCompatButton pickButton,cancelButton;
+    private Button pickButton,cancelButton;
     private RelativeLayout colorComponents,hexHolder,hsv,rgb;
     private ColorPickerCompatScrollView colorPickerCompatScrollView;
     private ColorPickerCompatHorizontalScrollView colorPickerCompatHorizontalScrollView;
@@ -179,8 +179,8 @@ public class ColorPickerDialog extends Dialog {
         colorPreviewBox=(LinearLayout)findViewById(R.id.colorPreviewBox);
         oldColorPreviewBox=(LinearLayout)findViewById(R.id.oldColorPreviewBox);
         hexHolder=(RelativeLayout)findViewById(R.id.hexHolder);
-        pickButton=(AppCompatButton)findViewById(R.id.pickButton);
-        cancelButton=(AppCompatButton)findViewById(R.id.cancelButton);
+        pickButton=(Button)findViewById(R.id.pickButton);
+        cancelButton=(Button)findViewById(R.id.cancelButton);
         colorComponents=(RelativeLayout)findViewById(R.id.colorComponents);
         hsv=(RelativeLayout)findViewById(R.id.hsv);
         rgb=(RelativeLayout)findViewById(R.id.rgb);
@@ -536,7 +536,7 @@ public class ColorPickerDialog extends Dialog {
     /**
      * Sets a pre-selected color in the ColorPicker when the dialog opens
      *
-     * @param color Hexadecimal String form of the color to be pre-selected in the ColorPicker when the dialog opens
+     * @param hexVal Hexadecimal String form of the color to be pre-selected in the ColorPicker when the dialog opens
      */
     public void setInitialColor(String hexVal){
         setInitialColor(Color.parseColor(hexVal));

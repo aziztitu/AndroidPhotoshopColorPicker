@@ -4,10 +4,10 @@ import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
-import android.support.v7.widget.AppCompatButton;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -22,7 +22,7 @@ public class ColorEditDialog extends Dialog {
 
     public static final int MODE_HSV=1,MODE_RGB=2;
 
-    private AppCompatButton doneButton,cancelButton;
+    private Button doneButton,cancelButton;
     private TextView name1,name2,name3,suffix1,suffix2,suffix3;
     private EditText val1,val2,val3;
 
@@ -44,12 +44,12 @@ public class ColorEditDialog extends Dialog {
 
     private void init(Context context){
         getWindow().requestFeature(Window.FEATURE_NO_TITLE);
-        setContentView(LayoutInflater.from(context).inflate(R.layout.dialod_edit_color_root, null));
+        setContentView(LayoutInflater.from(context).inflate(R.layout.dialog_edit_color_root, null));
 
         colorEditorRoot=(RelativeLayout)findViewById(R.id.colorEditorRoot);
 
-        doneButton=(AppCompatButton)findViewById(R.id.doneEditing);
-        cancelButton=(AppCompatButton)findViewById(R.id.cancelEditing);
+        doneButton=(Button)findViewById(R.id.doneEditing);
+        cancelButton=(Button)findViewById(R.id.cancelEditing);
         name1=(TextView)findViewById(R.id.name1);
         name2=(TextView)findViewById(R.id.name2);
         name3=(TextView)findViewById(R.id.name3);

@@ -15,7 +15,7 @@ public class ColorPickerRootView extends RelativeLayout {
 
     private final int DEFAULT_TEXT_COLOR = Color.parseColor("#222222");
 
-    private boolean FLAG_SHOW_HEX = true, FLAG_SHOW_COLOR_COMPS = true, FLAG_EDIT_HSV = true, FLAG_EDIT_RGB = true;
+    private boolean FLAG_SHOW_HEX = true, FLAG_SHOW_COLOR_COMPS = true, FLAG_SHOW_NO_COLOR_OPTION = false, FLAG_EDIT_HSV = true, FLAG_EDIT_RGB = true;
     private int FLAG_HEX_COLOR, FLAG_COMPS_COLOR, FLAG_POSITIVE_COLOR, FLAG_NEGATIVE_COLOR, FLAG_SLIDER_THUMB_COLOR, FLAG_BACKGROUND_COLOR;
     private String FLAG_POS_ACTION_TEXT = "PICK", FLAG_NEG_ACTION_TEXT = "CANCEL";
 
@@ -31,6 +31,7 @@ public class ColorPickerRootView extends RelativeLayout {
         try {
             FLAG_SHOW_HEX = a.getBoolean(R.styleable.ColorPickerRootView_cp_showHexaDecimalValue, true);
             FLAG_SHOW_COLOR_COMPS = a.getBoolean(R.styleable.ColorPickerRootView_cp_showColorComponentsInfo, true);
+            FLAG_SHOW_NO_COLOR_OPTION = a.getBoolean(R.styleable.ColorPickerRootView_cp_showNoColorOption, false);
             FLAG_EDIT_HSV = a.getBoolean(R.styleable.ColorPickerRootView_cp_editHSV, true);
             FLAG_EDIT_RGB = a.getBoolean(R.styleable.ColorPickerRootView_cp_editRGB, true);
             FLAG_HEX_COLOR = a.getColor(R.styleable.ColorPickerRootView_cp_hexaDecimalTextColor, DEFAULT_TEXT_COLOR);
@@ -63,6 +64,10 @@ public class ColorPickerRootView extends RelativeLayout {
 
     public boolean isFLAG_SHOW_COLOR_COMPS() {
         return FLAG_SHOW_COLOR_COMPS;
+    }
+
+    public boolean isFLAG_SHOW_NO_COLOR_OPTION() {
+        return FLAG_SHOW_NO_COLOR_OPTION;
     }
 
     public int getFLAG_HEX_COLOR() {

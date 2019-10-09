@@ -14,6 +14,7 @@
     <declare-styleable name="ColorPickerRootView">
         <attr name="cp_showHexaDecimalValue" format="boolean"/>
         <attr name="cp_showColorComponentsInfo" format="boolean"/>
+        <attr name="cp_showNoColorOption" format="boolean"/>
         <attr name="cp_backgroundColor" format="color"/>
         <attr name="cp_hexaDecimalTextColor" format="color"/>
         <attr name="cp_colorComponentsTextColor" format="color"/>

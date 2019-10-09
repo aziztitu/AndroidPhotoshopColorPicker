@@ -18,6 +18,7 @@
         <item name="cp_showOpacityBar">true</item>
         <item name="cp_showHexaDecimalValue">true</item>
         <item name="cp_showColorComponentsInfo">true</item>
+        <item name="cp_showNoColorOption">false</item>
     </style>
 
     <style name="ColorPicker.Light" parent="Base.Theme.AppCompat.Light.Dialog">

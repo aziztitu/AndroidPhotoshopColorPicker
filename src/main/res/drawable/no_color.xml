@@ -9,8 +9,9 @@
         android:fillColor="#ffffff"
         android:pathData="M 0 0 H 41 V 41 H 0 V 0 Z" />
     <path
-        android:strokeColor="#ff0000"
+        android:pathData="M 0,41 C 41,-0 41,-0 41,-0"
         android:strokeWidth="2"
-        android:strokeMiterLimit="10"
-        android:pathData="M 0,41 C 41,-0 41,-0 41,-0" />
+        android:strokeColor="#ff0000"
+        android:strokeMiterLimit="10" />
+
 </vector>

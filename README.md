@@ -29,6 +29,7 @@ Other internal changes:
 * Hue bar - Adjust hue using a slider
 * Saturation & Value Box - Select the color from the Saturation & Value Box (like in Photoshop)
 * Alpha bar - Adjust the alpha using a slider
+* "No color" option - Hidden by default, sets transparent color value
 * Preview - You can see the current selected and previously picked colors side-by-side
 * Edit each component individually - You can edit Hue, Saturation, Value, Red, Green and Blue components individually
 * Fully customizable - By default, there are two themes(Light and Dark). But you can define your own theme to customize the whole ColorPicker
@@ -86,6 +87,7 @@ After successful build, you can use ColorPickerDialog as a part of your project.
  * cp_showOpacityBar (boolean) : Show/Hide Opacity Bar
  * cp_showHexaDecimalValue (boolean) : Show/Hide Hexadecimal Value
  * cp_showColorComponentsInfo (boolean) : Show/Hide Color components information(HSV, RGB, Alpha)
+ * cp_showNoColorOption (boolean) : Show/Hide No Color button shortcut for transparent color value
  * cp_backgroundColor (color) : Background color for the dialog
  * cp_hexaDecimalTextColor (color) : Text color for the Hexadecimal value
  * cp_colorComponentsTextColor (color) : Text color for the Color components information(HSV, RGB, Alpha) 

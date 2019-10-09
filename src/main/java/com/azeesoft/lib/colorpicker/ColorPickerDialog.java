@@ -34,6 +34,7 @@ import androidx.appcompat.view.ContextThemeWrapper;
  * cp_showOpacityBar: boolean<br/>
  * cp_showHexaDecimalValue: boolean<br/>
  * cp_showColorComponentsInfo: boolean<br/>
+ * cp_showNoColorOption: boolean<br/>
  * cp_backgroundColor: color<br/>
  * cp_hexaDecimalTextColor: color<br/>
  * cp_colorComponentsTextColor: color<br/>
@@ -99,6 +100,7 @@ public class ColorPickerDialog extends Dialog {
      * cp_showOpacityBar: boolean<br/>
      * cp_showHexaDecimalValue: boolean<br/>
      * cp_showColorComponentsInfo: boolean<br/>
+     * cp_showNoColorOption: boolean<br/>
      * cp_backgroundColor: color<br/>
      * cp_hexaDecimalTextColor: color<br/>
      * cp_colorComponentsTextColor: color<br/>
@@ -124,6 +126,7 @@ public class ColorPickerDialog extends Dialog {
      * cp_showOpacityBar: boolean<br/>
      * cp_showHexaDecimalValue: boolean<br/>
      * cp_showColorComponentsInfo: boolean<br/>
+     * cp_showNoColorOption: boolean<br/>
      * cp_backgroundColor: color<br/>
      * cp_hexaDecimalTextColor: color<br/>
      * cp_colorComponentsTextColor: color<br/>
@@ -372,6 +375,12 @@ public class ColorPickerDialog extends Dialog {
             showColorComponentsInfo();
         }else{
             hideColorComponentsInfo();
+        }
+
+        if(colorPickerRootView.isFLAG_SHOW_NO_COLOR_OPTION()){
+            showNoColorOption();
+        }else{
+            hideNoColorOption();
         }
 
         int hexColor=colorPickerRootView.getFLAG_HEX_COLOR();

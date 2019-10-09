@@ -6,6 +6,8 @@ import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.os.Looper;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -239,6 +241,17 @@ public class ColorPickerDialog extends Dialog {
             public void onPicked(float hue) {
                 satValPicker.refreshSatValPicker(hue);
                 ColorPickerDialog.this.hue.setText("H: " + (int) hue + " \u00b0");
+            }
+        });
+        huePicker.setBitmapGenerationFailedListener(new HuePicker.BitmapGenerationFailedListener() {
+            @Override
+            public void onBitmapGenerationFailed() {
+                if (isShowing()) new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        huePicker.reloadBitmap();
+                    }
+                }, 1000L);
             }
         });
 

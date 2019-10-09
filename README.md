@@ -11,7 +11,7 @@ A full featured Color picker Library for Android! Just like the one in Photoshop
 * Added a "no color" option (transparent color value)
 * Original bitmap generation was prone to crashes, which are instead caught in this fork's source code
 * Original HuePicker, OpacityPicker and SatValPicker have memory leaks, which are fixed in this fork's code
-* For the above changes, HuePicker provides the method `setBitmapGenerationFailedListener` which listens for bitmap generation failure
+* For the above changes, HuePicker provides the method `setBitmapGenerationFailedListener` which listens for bitmap generation failure; ColorPickerDialog uses this listener to automatically reattempt reloading the bitmap every second while the dialog is still showing
 * Migrated from legacy support library to AndroidX AppCompat v1.1.0, leaving inflation of the correct Button classes to the implementations of this library
 
 Other internal changes:

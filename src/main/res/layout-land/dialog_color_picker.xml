@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:showIn="@layout/dialog_root"
+    tools:showIn="@layout/dialog_color_picker_root"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
     <com.azeesoft.lib.colorpicker.SatValPicker

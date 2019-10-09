@@ -102,7 +102,7 @@ public class HuePicker extends OrientedSeekBar {
     }
 
     public interface BitmapGenerationFailedListener {
-        void onBitmapGenerationFailedListener();
+        void onBitmapGenerationFailed();
     }
 
     public interface OnHuePickedListener {
@@ -133,7 +133,7 @@ public class HuePicker extends OrientedSeekBar {
             if (bitmapDrawable != null)
                 setProgressDrawable(bitmapDrawable);
             else
-                bitmapGenerationFailedListener.onBitmapGenerationFailedListener();
+                bitmapGenerationFailedListener.onBitmapGenerationFailed();
         }
     }
 }

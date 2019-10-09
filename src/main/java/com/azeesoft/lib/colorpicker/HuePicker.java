@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.util.AttributeSet;
 import android.view.ViewTreeObserver;
 import android.widget.SeekBar;
@@ -43,7 +44,11 @@ public class HuePicker extends OrientedSeekBar {
         vto.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
             public void onGlobalLayout() {
-                getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN) {
+                    getViewTreeObserver().removeGlobalOnLayoutListener(this);
+                } else {
+                    getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                }
                 /*int width = HuePicker.this.getMeasuredWidth();
                 int height = HuePicker.this.getMeasuredHeight();
                 //System.out.println("Width2: " + width);

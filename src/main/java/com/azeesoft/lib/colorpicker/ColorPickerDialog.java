@@ -588,6 +588,20 @@ public class ColorPickerDialog extends Dialog {
     }
 
     /**
+     * Show the no color (transparent) option in the ColorPicker
+     */
+    public void showNoColorOption(){
+        ivNoColor.setVisibility(View.VISIBLE);
+    }
+
+    /**
+     * Hide the no color (transparent) option in the ColorPicker
+     */
+    public void hideNoColorOption(){
+        ivNoColor.setVisibility(View.GONE);
+    }
+
+    /**
      * Show the Hexadecimal value in the ColorPicker
      */
     public void showHexaDecimalValue(){

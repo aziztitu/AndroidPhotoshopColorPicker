@@ -85,27 +85,27 @@
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_alignParentLeft="true"
+                    android:layout_marginRight="20dp"
                     android:src="@drawable/no_color"
-                    android:layout_marginLeft="0dp"
                     android:padding="7dp"
-                    android:id="@+id/ivNoColor" />
+                    android:id="@+id/ivNoColor"
+                    android:visibility="gone"
+                    tools:visibility="visible" />
 
                 <ImageView
                     android:layout_width="100dp"
                     android:layout_height="50dp"
                     android:id="@+id/imageView"
                     android:src="@mipmap/checker"
-                    android:layout_toRightOf="@id/ivNoColor"
-                    android:layout_marginLeft="35dp"
                     android:adjustViewBounds="false"
-                    android:scaleType="matrix" />
+                    android:scaleType="matrix"
+                    android:layout_toRightOf="@id/ivNoColor" />
 
                 <LinearLayout
-                    android:layout_toRightOf="@id/ivNoColor"
                     android:orientation="horizontal"
-                    android:layout_marginLeft="35dp"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/ivNoColor">
 
                     <LinearLayout
                         android:orientation="horizontal"

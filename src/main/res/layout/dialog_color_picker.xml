@@ -72,15 +72,16 @@
             android:layout_alignParentLeft="true"
             android:src="@drawable/no_color"
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:id="@+id/ivNoColor" />
+            android:id="@+id/ivNoColor"
+            android:visibility="gone"
+            tools:visibility="visible" />
 
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/preview"
-            android:layout_marginLeft="35dp"
             android:layout_toRightOf="@id/ivNoColor"
-            >
+            android:layout_marginLeft="20dp">
 
             <ImageView
                 android:layout_width="100dp"

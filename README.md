@@ -3,26 +3,9 @@
 
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-AndroidPhotoshopColorPicker-green.svg?style=true)](https://android-arsenal.com/details/1/3143)
 
+
+
 A full featured Color picker Library for Android! Just like the one in Photoshop!
-
-# Differences from original repository
-
-* Posted on jitpack.io instead of jcenter
-* Added a "no color" option (transparent color value)
-* Original bitmap generation was prone to crashes, which are instead caught in this fork's source code
-* Original HuePicker, OpacityPicker and SatValPicker have memory leaks, which are fixed in this fork's code
-* For the above changes, HuePicker provides the method `setBitmapGenerationFailedListener` which listens for bitmap generation failure
-* Migrated from legacy support library to AndroidX AppCompat v1.1.0, leaving inflation of the correct Button classes to the implementations of this library
-
-Other internal changes:
-* Library updates: Gradle wrapper 3.3 -> 5.4.1; Gradle build tools 2.2.0 -> 3.5.0; Maven gradle plugin 1.5 -> 2.0; Compile/Target Android SDK level 25 -> 29; Min Android SDK level 11 -> 14; Android build tools 23.0.3 -> 29.0.2
-* Switched from deprecated `compile` to `api` in build.gradle
-* Fixed spelling mistake "dialog_edit_color_root.xml"
-* Removed application declaration from manifest to prevent transitive changes
-* Added missing items to .gitignore
-* Standard Android Studio source code formatting
-* Minor refactoring inside onInterceptTouchEvent of ScrollViews
-* Removed redundant minSizePx variable from HuePicker and OpacityPicker
 
 # Features
 
@@ -40,16 +23,19 @@ Tested with APIv11, but will most probably work with earlier versions as well.
 
 # Installation (Adding to your project)
 
-The library is posted on jitpack. So, just the following code should be enough to get you started:
+The library is posted on jcenter. So, just the following code should be enough to get you started:
 
 Place this in your app module's build.gradle file:
 ```groovy
     dependencies {
-      implementation 'com.github.alexandre-g:AndroidPhotoshopColorPicker:1.2.0'
+      implementation 'com.azeesoft.lib.colorpicker:colorpicker:1.1.0@aar'
     }
+```
+If there is any error while building the project using the above mentioned step, add the following code in that build.gradle file and build again:
+```groovy
     repositories {
         maven {
-            url "https://jitpack.io"
+            url 'https://dl.bintray.com/azeesoft/maven'
         }
     }
 ```

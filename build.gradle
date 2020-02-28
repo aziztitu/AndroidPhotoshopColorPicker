@@ -21,7 +21,7 @@ android {
         minSdkVersion 14
         targetSdkVersion 29
         versionCode 10
-        versionName "1.2.0"
+        versionName "1.2.2"
     }
     buildTypes {
         release {
@@ -31,7 +31,7 @@ android {
     }
 }
 
-version = '1.2.1'
+version = '1.2.2'
 group = "com.alexandre.g.lib.colorpicker"
 
 dependencies {

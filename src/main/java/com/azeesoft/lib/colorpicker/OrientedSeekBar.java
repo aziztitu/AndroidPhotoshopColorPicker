@@ -47,7 +47,7 @@ public class OrientedSeekBar extends AppCompatSeekBar {
         super(context, attrs);
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.OrientedSeekBar, 0, 0);
         try {
-            orientation = a.getInt(R.styleable.OrientedSeekBar_orientation, ORIENTATION_HORIZONTAL);
+            orientation = a.getInt(R.styleable.OrientedSeekBar_cp_orientation, ORIENTATION_HORIZONTAL);
         } finally {
             a.recycle();
         }

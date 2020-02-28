@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="OrientedSeekBar">
-        <attr name="orientation" format="enum">
+        <attr name="cp_orientation" format="enum">
             <enum name="horizontal" value="1" />
             <enum name="vertical" value="2" />
         </attr>

@@ -47,7 +47,7 @@ The library is posted on jitpack. So, just the following code should be enough t
 Place this in your app module's build.gradle file:
 ```groovy
     dependencies {
-      implementation 'com.github.alexandre-g:AndroidPhotoshopColorPicker:1.2.0'
+      implementation 'com.github.alexandre-g:AndroidPhotoshopColorPicker:1.2.2'
     }
     repositories {
         maven {

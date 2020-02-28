@@ -15,7 +15,7 @@ A full featured Color picker Library for Android! Just like the one in Photoshop
 * Migrated from legacy support library to AndroidX AppCompat v1.1.0, leaving inflation of the correct Button classes to the implementations of this library
 
 Other internal changes:
-* Library updates: Gradle wrapper 3.3 -> 5.4.1; Gradle build tools 2.2.0 -> 3.5.1; Maven gradle plugin 1.5 -> 2.0; Compile/Target Android SDK level 25 -> 29; Min Android SDK level 11 -> 14; Android build tools 23.0.3 -> 29.0.2
+* Library updates: Gradle wrapper 3.3 -> 6.2.1; Gradle build tools 2.2.0 -> 3.6.0; Maven gradle plugin 1.5 -> 2.0; Compile/Target Android SDK level 25 -> 29; Min Android SDK level 11 -> 14; Android build tools 23.0.3 -> 29.0.3
 * Switched from deprecated `compile` to `api` in build.gradle
 * Fixed spelling mistake "dialog_edit_color_root.xml"
 * Removed application declaration from manifest to prevent transitive changes
@@ -23,6 +23,7 @@ Other internal changes:
 * Standard Android Studio source code formatting
 * Minor refactoring inside onInterceptTouchEvent of ScrollViews
 * Removed redundant minSizePx variable from HuePicker and OpacityPicker
+* Renamed OrientedSeekBar orientation attr to cp_orientation to avoid conflicts with androidx.gridlayout
 
 # Features
 

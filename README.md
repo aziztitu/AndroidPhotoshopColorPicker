@@ -23,7 +23,7 @@ Other internal changes:
 * Standard Android Studio source code formatting
 * Minor refactoring inside onInterceptTouchEvent of ScrollViews
 * Removed redundant minSizePx variable from HuePicker and OpacityPicker
-* Renamed OrientedSeekBar orientation attr to cp_orientation to avoid conflicts with androidx.gridlayout
+* Renamed OrientedSeekBar `orientation` attribute to `cp_orientation` to avoid conflicts with `androidx.gridlayout` library
 
 # Features
 

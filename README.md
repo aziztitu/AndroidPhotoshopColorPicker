@@ -7,6 +7,28 @@
 
 A full featured Color picker Library for Android! Just like the one in Photoshop!
 
+# Differences from original repository
+
+* Posted on jitpack.io instead of jcenter
+* Added a "no color" option (transparent color value)
+* Original bitmap generation was prone to crashes, which are instead caught in this fork's source code
+* Original HuePicker, OpacityPicker and SatValPicker have memory leaks, which are fixed in this fork's code
+* For the above changes, HuePicker provides the method `setBitmapGenerationFailedListener` which listens for bitmap generation failure; ColorPickerDialog uses this listener to automatically reattempt reloading the bitmap every second while the dialog is still showing
+* Migrated from legacy support library to AndroidX AppCompat v1.1.0, leaving inflation of the correct Button classes to the implementations of this library
+* Changed pressed state of SatValPicker to accent color
+
+Other internal changes:
+* Library updates: Gradle wrapper 3.3 -> 6.2.1; Gradle build tools 2.2.0 -> 3.6.1; Maven gradle plugin 1.5 -> 2.0; Compile/Target Android SDK level 25 -> 29; Min Android SDK level 11 -> 14; Android build tools 23.0.3 -> 29.0.3
+* Switched from deprecated `compile` to `api` in build.gradle
+* Fixed spelling mistake `dialod_edit_color_root.xml`
+* Removed application declaration from manifest to prevent transitive changes
+* Added missing items to .gitignore
+* Standard Android Studio source code formatting
+* Minor refactoring inside `onInterceptTouchEvent` of ScrollViews
+* Removed redundant `minSizePx` variable from HuePicker and OpacityPicker
+* Moved content from mipmap-xxxhdpi folder to mipmap to avoid related crashes
+* Renamed OrientedSeekBar `orientation` attribute to `cp_orientation` to avoid conflicts with `androidx.gridlayout` library
+
 # Features
 
 * Hue bar - Adjust hue using a slider

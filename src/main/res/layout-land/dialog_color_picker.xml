@@ -37,7 +37,7 @@
         android:progressDrawable="@drawable/transparent"
         android:splitTrack="false"
         android:thumb="@drawable/slider_thumb"
-        app:orientation="vertical"
+        app:cp_orientation="vertical"
         tools:ignore="UnusedAttribute" />
 
     <com.azeesoft.lib.colorpicker.OpacityPicker
@@ -55,7 +55,7 @@
         android:progressDrawable="@drawable/opacity_box_bg_land"
         android:splitTrack="false"
         android:thumb="@drawable/slider_thumb"
-        app:orientation="vertical" />
+        app:cp_orientation="vertical" />
 
     <RelativeLayout
         android:layout_width="match_parent"

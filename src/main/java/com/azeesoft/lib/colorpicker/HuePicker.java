@@ -1,26 +1,28 @@
 package com.azeesoft.lib.colorpicker;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
+import android.os.AsyncTask;
+import android.os.Build;
 import android.util.AttributeSet;
 import android.view.ViewTreeObserver;
 import android.widget.SeekBar;
 
+import java.lang.ref.WeakReference;
+
 /**
  * Created by aziz titu2 on 2/9/2016.
- *
+ * <p>
  * A modified {@link OrientedSeekBar} that draws the HueRange as its background
  */
 public class HuePicker extends OrientedSeekBar {
 
-    private static final int MIN_SIZE_DIP = 200;
-    private boolean canUpdateHexVal=true;
+    private boolean canUpdateHexVal = true;
 
-    private static int minSizePx;
     private OnHuePickedListener onHuePickedListener;
 
-
-    Context mContext;
+    private BitmapGenerationFailedListener bitmapGenerationFailedListener;
 
     public HuePicker(Context context) {
         super(context);
@@ -32,29 +34,26 @@ public class HuePicker extends OrientedSeekBar {
         init(context);
     }
 
-
     private void init(Context context) {
-        minSizePx = (int) Stools.dipToPixels(context, MIN_SIZE_DIP);
-        mContext = context;
 //        setThumb(mContext.getResources().getDrawable(R.drawable.thumb));
 //        measure(MeasureSpec.UNSPECIFIED,MeasureSpec.UNSPECIFIED);
         //System.out.println("Width1: " + getMeasuredWidth());
         //System.out.println("Height1: " + getMeasuredHeight());
 
-        ViewTreeObserver vto = getViewTreeObserver();
+        final ViewTreeObserver vto = getViewTreeObserver();
         vto.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
             public void onGlobalLayout() {
-                HuePicker.this.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN) {
+                    getViewTreeObserver().removeGlobalOnLayoutListener(this);
+                } else {
+                    getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                }
                 /*int width = HuePicker.this.getMeasuredWidth();
                 int height = HuePicker.this.getMeasuredHeight();
                 //System.out.println("Width2: " + width);
                 //System.out.println("Height2: " + height);*/
-
-                if(orientation==ORIENTATION_HORIZONTAL)
-                    setProgressDrawable(new BitmapDrawable(BitmapsGenerator.getHueBitmap(getMeasuredWidth(), getMeasuredHeight())));
-                else
-                    setProgressDrawable(new BitmapDrawable(BitmapsGenerator.getHueBitmap(getMeasuredHeight(), getMeasuredWidth())));
+                reloadBitmap();
             }
         });
 
@@ -75,19 +74,15 @@ public class HuePicker extends OrientedSeekBar {
 
             }
         });
-
-
     }
 
-
-    public void setHue(float hue){
+    public void setHue(float hue) {
         if (onHuePickedListener != null)
             onHuePickedListener.onPicked(hue);
     }
 
-
-    public void setOnHuePickedListener(OnHuePickedListener onHuePickedListener){
-        this.onHuePickedListener=onHuePickedListener;
+    public void setOnHuePickedListener(OnHuePickedListener onHuePickedListener) {
+        this.onHuePickedListener = onHuePickedListener;
     }
 
     public boolean isCanUpdateHexVal() {
@@ -98,8 +93,47 @@ public class HuePicker extends OrientedSeekBar {
         this.canUpdateHexVal = canUpdateHexVal;
     }
 
+    public void reloadBitmap() {
+        new HueChanger(getMeasuredWidth(), getMeasuredHeight()).execute();
+    }
 
-    public interface OnHuePickedListener{
+    public void setBitmapGenerationFailedListener(BitmapGenerationFailedListener listener) {
+        bitmapGenerationFailedListener = listener;
+    }
+
+    public interface BitmapGenerationFailedListener {
+        void onBitmapGenerationFailed();
+    }
+
+    public interface OnHuePickedListener {
         void onPicked(float hue);
+    }
+
+    private class HueChanger extends AsyncTask<Float, Void, BitmapDrawable> {
+
+        private WeakReference<Context> contextRef = new WeakReference<>(getContext());
+        private int width;
+        private int height;
+
+        private HueChanger(int width, int height) {
+            this.width = width;
+            this.height = height;
+        }
+
+        @Override
+        protected BitmapDrawable doInBackground(Float... params) {
+            boolean horizontal = orientation == ORIENTATION_HORIZONTAL;
+            Bitmap bitmap = BitmapsGenerator.getHueBitmap(horizontal ? width : height, horizontal ? height : width);
+            Context context = contextRef.get();
+            return bitmap != null && context != null ? new BitmapDrawable(context.getResources(), bitmap) : null;
+        }
+
+        @Override
+        protected void onPostExecute(BitmapDrawable bitmapDrawable) {
+            if (bitmapDrawable != null)
+                setProgressDrawable(bitmapDrawable);
+            else
+                bitmapGenerationFailedListener.onBitmapGenerationFailed();
+        }
     }
 }

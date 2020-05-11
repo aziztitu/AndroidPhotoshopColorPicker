@@ -9,19 +9,14 @@ import android.widget.SeekBar;
 
 /**
  * Created by aziz titu2 on 2/10/2016.
- *
+ * <p>
  * A modified {@link OrientedSeekBar} to select Opacity
  */
 public class OpacityPicker extends OrientedSeekBar {
 
-    private static final int MIN_SIZE_DIP = 200;
+    private boolean canUpdateHexVal = true;
 
-    private static int minSizePx;
     private OnOpacityPickedListener onOpacityPickedListener;
-
-    private boolean canUpdateHexVal=true;
-    Context mContext;
-
 
     public OpacityPicker(Context context) {
         super(context);
@@ -35,9 +30,9 @@ public class OpacityPicker extends OrientedSeekBar {
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.OpacityPicker, 0, 0);
 
         try {
-            if(a.getBoolean(R.styleable.OpacityPicker_cp_showOpacityBar, true)){
+            if (a.getBoolean(R.styleable.OpacityPicker_cp_showOpacityBar, true)) {
                 setVisibility(View.VISIBLE);
-            }else{
+            } else {
                 setVisibility(View.GONE);
             }
         } finally {
@@ -47,8 +42,6 @@ public class OpacityPicker extends OrientedSeekBar {
 
 
     private void init(Context context) {
-        minSizePx = (int) Stools.dipToPixels(context, MIN_SIZE_DIP);
-        mContext = context;
         setMax(255);
 
 //        setThumb(mContext.getResources().getDrawable(R.drawable.thumb));
@@ -92,11 +85,11 @@ public class OpacityPicker extends OrientedSeekBar {
 
     }
 
-    public void setOnOpacityPickedListener(OnOpacityPickedListener onOpacityPickedListener){
-        this.onOpacityPickedListener=onOpacityPickedListener;
+    public void setOnOpacityPickedListener(OnOpacityPickedListener onOpacityPickedListener) {
+        this.onOpacityPickedListener = onOpacityPickedListener;
     }
 
-    public void setOp(int opacity){
+    public void setOp(int opacity) {
         if (onOpacityPickedListener != null)
             onOpacityPickedListener.onPicked(opacity);
     }
@@ -115,7 +108,7 @@ public class OpacityPicker extends OrientedSeekBar {
         this.canUpdateHexVal = canUpdateHexVal;
     }
 
-    public interface OnOpacityPickedListener{
+    public interface OnOpacityPickedListener {
         void onPicked(int opacity);
     }
 }

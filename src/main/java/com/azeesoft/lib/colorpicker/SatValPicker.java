@@ -1,37 +1,36 @@
 package com.azeesoft.lib.colorpicker;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.AsyncTask;
-import android.os.Build;
 import android.util.AttributeSet;
-import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+
+import java.lang.ref.WeakReference;
 
 /**
  * Created by aziz titu2 on 2/9/2016.
  */
 public class SatValPicker extends ViewGroup {
 
+    private static final int SKIP_COUNT_DIP = 2;
     private static final int MIN_SIZE_DIP = 200;
-//    public static boolean canScroll=true;
 
-    private boolean firstDraw,pendingUpdateSatVal=false;
-    private boolean canUpdateHexVal=true;
-    private int minSizePx,mWidth,mHeight;
-    private float mHue=0,mSat=0,mVal=1,pointerX,pointerY;
-    private Context mContext;
+    private int skipCount = SKIP_COUNT_DIP;
+    private boolean firstDraw, pendingUpdateSatVal = false;
+    private boolean canUpdateHexVal = true;
+    private int minSizePx, mWidth, mHeight;
+    private float mHue = 0, mSat = 0, mVal = 1, pointerX, pointerY;
     private OnColorSelectedListener onColorSelectedListener;
     private ImageView thumb;
     private ColorPickerCompatScrollView colorPickerCompatScrollView;
     private ColorPickerCompatHorizontalScrollView colorPickerCompatHorizontalScrollView;
-
-    public int skipCount=10;
 
     public SatValPicker(Context context) {
         super(context);
@@ -107,13 +106,13 @@ public class SatValPicker extends ViewGroup {
             size = Math.min(w, h);
         }
         size = Math.max(size, minSizePx);
-        setMeasuredDimension(size, size);
+        setMeasuredDimension(size, size / 2);
 
-        mWidth=getMeasuredWidth();
-        mHeight=getMeasuredHeight();
+        mWidth = getMeasuredWidth();
+        mHeight = getMeasuredHeight();
         //System.out.println("init sat val measures: " + mWidth + "," + mHeight);
-        if(firstDraw) {
-            firstDraw=false;
+        if (firstDraw) {
+            firstDraw = false;
             refreshSatValPicker(mHue);
         }
     }
@@ -124,18 +123,18 @@ public class SatValPicker extends ViewGroup {
     }
 
     public void init(Context context) {
-        mContext = context;
+        skipCount = (int) Stools.dipToPixels(context, SKIP_COUNT_DIP);
         minSizePx = (int) Stools.dipToPixels(context, MIN_SIZE_DIP);
-        firstDraw=true;
-        pendingUpdateSatVal=false;
+        firstDraw = true;
+        pendingUpdateSatVal = false;
 
-        thumb=(ImageView) LayoutInflater.from(mContext).inflate(R.layout.sat_val_thumb,null);
+        thumb = new ImageView(context);
+        thumb.setImageResource(R.drawable.thumb);
 
-        thumb.setPivotX(Stools.dipToPixels(mContext, 6));
-        thumb.setPivotY(Stools.dipToPixels(mContext, 6));
+        thumb.setPivotX(Stools.dipToPixels(getContext(), 6));
+        thumb.setPivotY(Stools.dipToPixels(getContext(), 6));
 
         addView(thumb);
-
     }
 
     @Override
@@ -157,41 +156,39 @@ public class SatValPicker extends ViewGroup {
 //        return super.onTouchEvent(event);
     }
 
-    private void disableScroll(){
-        if(colorPickerCompatScrollView!=null)
+    private void disableScroll() {
+        if (colorPickerCompatScrollView != null)
             colorPickerCompatScrollView.setScrollDisabled(true);
 
-        if(colorPickerCompatHorizontalScrollView!=null)
+        if (colorPickerCompatHorizontalScrollView != null)
             colorPickerCompatHorizontalScrollView.setScrollDisabled(true);
     }
 
-    private void enableScroll(){
-        if(colorPickerCompatScrollView!=null)
+    private void enableScroll() {
+        if (colorPickerCompatScrollView != null)
             colorPickerCompatScrollView.setScrollDisabled(false);
 
 
-        if(colorPickerCompatHorizontalScrollView!=null)
+        if (colorPickerCompatHorizontalScrollView != null)
             colorPickerCompatHorizontalScrollView.setScrollDisabled(false);
     }
 
-    private void placePointer(float x, float y){
-        if(mWidth>0 && mHeight>0){
-            if(x<0)
-                x=0;
-            else if(x>mWidth)
-                x=mWidth;
+    private void placePointer(float x, float y) {
+        if (mWidth > 0 && mHeight > 0) {
+            if (x < 0)
+                x = 0;
+            else if (x > mWidth)
+                x = mWidth;
 
-            if(y<0)
-                y=0;
-            else if(y>mHeight)
-                y=mHeight;
+            if (y < 0)
+                y = 0;
+            else if (y > mHeight)
+                y = mHeight;
 
-            thumb.setX(x - Stools.dipToPixels(mContext,6));
-            thumb.setY(y - Stools.dipToPixels(mContext, 6));
-            if(y<mHeight/2)
-                thumb.setImageDrawable(mContext.getResources().getDrawable(R.drawable.thumb));
-            else
-                thumb.setImageDrawable(mContext.getResources().getDrawable(R.drawable.thumb_white));
+            thumb.setX(x - Stools.dipToPixels(getContext(), 6));
+            thumb.setY(y - Stools.dipToPixels(getContext(), 6));
+            int thumbResId = y < mHeight / 2 ? R.drawable.thumb : R.drawable.thumb_white;
+            thumb.setImageDrawable(getContext().getResources().getDrawable(thumbResId, getContext().getTheme()));
 
             retrieveColorAt(x, y);
 
@@ -200,92 +197,62 @@ public class SatValPicker extends ViewGroup {
         //System.out.println("AshY: " + y);
     }
 
-    private void retrieveColorAt(float x, float y){
+    private void retrieveColorAt(float x, float y) {
 
-        pointerX=x;
-        pointerY=y;
+        pointerX = x;
+        pointerY = y;
 
-        mSat = (x) / (float)mWidth;
-        mVal = ((mHeight - y)) / (float)mHeight;
+        mSat = (x) / (float) mWidth;
+        mVal = ((mHeight - y)) / (float) mHeight;
 
         onColorRetrieved(mHue, mSat, mVal);
     }
 
-    private void onColorRetrieved(float hue,float sat,float val){
-        int color=Color.HSVToColor(new float[]{hue, sat, val});
+    private void onColorRetrieved(float hue, float sat, float val) {
+        int color = Color.HSVToColor(new float[]{hue, sat, val});
 
-        if(onColorSelectedListener !=null){
+        if (onColorSelectedListener != null) {
             onColorSelectedListener.onColorSelected(color, "#" + Integer.toHexString(color));
         }
     }
 
-    public void setOnColorSelectedListener(OnColorSelectedListener onColorSelectedListener){
+    public void setOnColorSelectedListener(OnColorSelectedListener onColorSelectedListener) {
         this.onColorSelectedListener = onColorSelectedListener;
     }
 
-    public void setSaturationAndValue(float sat,float val){
-        setSaturationAndValue(sat, val,true);
+    public void setSaturationAndValue(float sat, float val) {
+        setSaturationAndValue(sat, val, true);
     }
 
-    public void setSaturationAndValue(float sat,float val,boolean apply){
+    public void setSaturationAndValue(float sat, float val, boolean apply) {
         //System.out.println("Ash Sat Val: "+ sat+" " + val);
         //System.out.println("Ash mWidth mHeight: "+ mWidth+" "+mHeight);
-        if((mWidth<=0 || mHeight<=0) || !apply){
-            mSat=sat;
-            mVal=val;
-            pendingUpdateSatVal=true;
-        }else
+        if ((mWidth <= 0 || mHeight <= 0) || !apply) {
+            mSat = sat;
+            mVal = val;
+            pendingUpdateSatVal = true;
+        } else
             placePointer(sat * mWidth, mHeight - (val * mHeight));
     }
 
     public void refreshSatValPicker(float hue) {
-        mHue=hue;
+        mHue = hue;
 
 
         //System.out.println("Refreshing with Hue: "+hue);
 
 //        mCanvas.drawBitmap(getSatValBitmap(hue), 0, 0, null);
 
-        class SatValChanger extends AsyncTask<Float, Void, BitmapDrawable> {
-            float hue;
-
-            @Override
-            protected BitmapDrawable doInBackground(Float... params) {
-//                //System.out.println("sat val measures: "+mWidth+","+mHeight);
-                hue=params[0];
-                return new BitmapDrawable(BitmapsGenerator.getSatValBitmap(hue,mWidth,mHeight,skipCount));
-            }
-
-            @Override
-            protected void onPostExecute(BitmapDrawable bitmapDrawable) {
-                super.onPostExecute(bitmapDrawable);
-
-//                if(Math.abs(hue-mHue)<40)
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-                        setBackground(bitmapDrawable);
-                    } else {
-                        setBackgroundDrawable(bitmapDrawable);
-                    }
-
-                if(pendingUpdateSatVal)
-                    placePointer(mSat * mWidth, mHeight - (mVal * mHeight));
-                else
-                    retrieveColorAt(pointerX, pointerY);
-            }
-        }
-
-
-        if(mWidth>0 && mHeight>0)
+        if (mWidth > 0 && mHeight > 0)
             new SatValChanger().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, hue);
-
     }
 
-    public void setColorPickerCompatScrollView(ColorPickerCompatScrollView colorPickerCompatScrollView){
-        this.colorPickerCompatScrollView=colorPickerCompatScrollView;
+    public void setColorPickerCompatScrollView(ColorPickerCompatScrollView colorPickerCompatScrollView) {
+        this.colorPickerCompatScrollView = colorPickerCompatScrollView;
     }
 
-    public void setColorPickerCompatHorizontalScrollView(ColorPickerCompatHorizontalScrollView colorPickerCompatHorizontalScrollView){
-        this.colorPickerCompatHorizontalScrollView=colorPickerCompatHorizontalScrollView;
+    public void setColorPickerCompatHorizontalScrollView(ColorPickerCompatHorizontalScrollView colorPickerCompatHorizontalScrollView) {
+        this.colorPickerCompatHorizontalScrollView = colorPickerCompatHorizontalScrollView;
     }
 
     public boolean isCanUpdateHexVal() {
@@ -300,4 +267,30 @@ public class SatValPicker extends ViewGroup {
         void onColorSelected(int color, String hexVal);
     }
 
+    private class SatValChanger extends AsyncTask<Float, Void, BitmapDrawable> {
+
+        private WeakReference<Context> contextRef = new WeakReference<>(getContext());
+        private float hue;
+
+        @Override
+        protected BitmapDrawable doInBackground(Float... params) {
+//                //System.out.println("sat val measures: "+mWidth+","+mHeight);
+            hue = params[0];
+            Bitmap bitmap = BitmapsGenerator.getSatValBitmap(hue, mWidth, mHeight, skipCount);
+            Context context = contextRef.get();
+            return bitmap != null && context != null ? new BitmapDrawable(context.getResources(), bitmap) : null;
+        }
+
+        @Override
+        protected void onPostExecute(BitmapDrawable bitmapDrawable) {
+//                if(Math.abs(hue-mHue)<40)
+            if (bitmapDrawable != null)
+                setBackground(bitmapDrawable);
+
+            if (pendingUpdateSatVal)
+                placePointer(mSat * mWidth, mHeight - (mVal * mHeight));
+            else
+                retrieveColorAt(pointerX, pointerY);
+        }
+    }
 }
